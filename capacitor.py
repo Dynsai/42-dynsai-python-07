@@ -1,5 +1,5 @@
-from ex0.factory import CreatureFactory, FlameFactory, AquaFactory
-
+from ex1.factory import HealingCreatureFactory, TransformCreatureFactory
+from ex0.factory import CreatureFactory
 
 def test_ex0(factory: CreatureFactory) -> None:
     print("=== Testing ex0 ===")
@@ -23,13 +23,17 @@ def battle(factory_a: CreatureFactory, factory_b: CreatureFactory) -> None:
 
 
 if __name__ == "__main__":
-    flame_production = FlameFactory()
-    aqua_production = AquaFactory()
+    heal_production = HealingCreatureFactory()
+    transform_production = TransformCreatureFactory()
 
-    test_ex0(flame_production)
+    test_ex0(heal_production)
     print()
-    test_ex0(aqua_production)
+    test_ex0(transform_production)
     print()
-    battle(flame_production, aqua_production)
+    battle(heal_production, transform_production)
     print()
     print("=== End of Program ===")
+
+
+# TODO need to create all the prints and test on this file. 
+# TODO so it does the same output as expected.

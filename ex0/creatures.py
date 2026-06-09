@@ -4,12 +4,12 @@ from abc import ABC, abstractmethod
 class Creature(ABC):
     def __init__(self, name: str, creature_type: str) -> None:
         self.name: str = name
-        self.creature_type: str = type
+        self.creature_type: str = creature_type
 
     @abstractmethod
     def attack(self) -> str:
         ...
-    
+
     def describe(self) -> str:
         return f"{self.name} is a {self.creature_type} creature"
 
@@ -19,7 +19,7 @@ class Flameling(Creature):
         super().__init__("Flameling", "Fire")
 
     def attack(self) -> str:
-        return f"{self.name} uses ember!"
+        return f"{self.name} uses Ember!"
 
 
 class Pyrodon(Creature):
