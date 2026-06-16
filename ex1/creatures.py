@@ -40,7 +40,7 @@ class Shiftling(Creature, TransformCapability):
 
     def revert(self) -> str:
         self._transformed = False
-        return "Shiftling reverts"
+        return "Shiftling reverts their transformation"
 
 
 class Morphagon(Creature, TransformCapability):
@@ -59,4 +59,4 @@ class Morphagon(Creature, TransformCapability):
 
     def revert(self) -> str:
         self._transformed = False
-        return "Morphagon reverts"
+        return "Morphagon reverts their transformation"

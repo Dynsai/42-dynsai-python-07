@@ -1,39 +1,44 @@
 from ex1.factory import HealingCreatureFactory, TransformCreatureFactory
-from ex0.factory import CreatureFactory
+from ex1.factory import CreatureFactory
 
-def test_ex0(factory: CreatureFactory) -> None:
-    print("=== Testing ex0 ===")
+
+def test_heal(factory: CreatureFactory) -> None:
+    print("=== Testing healing ===")
     new_creature = factory.create_base()
+    evolved_creature = factory.create_evolved()
     print(f"{new_creature.describe()}")
     print(f"{new_creature.attack()}")
+    print(f"{new_creature.heal()}")
     print()
-    evolved_creature = factory.create_evolved()
     print(f"{evolved_creature.describe()}")
     print(f"{evolved_creature.attack()}")
+    print(f"{evolved_creature.heal()}")
+    print()
 
 
-def battle(factory_a: CreatureFactory, factory_b: CreatureFactory) -> None:
-    creature_a = factory_a.create_base()
-    creature_b = factory_b.create_base()
-
-    print("=== FIGHT! ===")
-    print(f"{creature_a.describe()}\nvs\n{creature_b.describe()}\n")
-    print(f"{creature_a.attack()}")
-    print(f"{creature_b.attack()}")
+def test_transform(factory: CreatureFactory) -> None:
+    print("=== Testing transform ===")
+    new_creature = factory.create_base()
+    evolved_creature = factory.create_evolved()
+    print(f"{new_creature.describe()}")
+    print(f"{new_creature.attack()}")
+    print(f"{new_creature.transform()}")
+    print(f"{new_creature.attack()}")
+    print(f"{new_creature.revert()}")
+    print()
+    print(f"{evolved_creature.describe()}")
+    print(f"{evolved_creature.attack()}")
+    print(f"{evolved_creature.transform()}")
+    print(f"{evolved_creature.attack()}")
+    print(f"{evolved_creature.revert()}")
+    print()
 
 
 if __name__ == "__main__":
     heal_production = HealingCreatureFactory()
     transform_production = TransformCreatureFactory()
 
-    test_ex0(heal_production)
+    test_heal(heal_production)
     print()
-    test_ex0(transform_production)
-    print()
-    battle(heal_production, transform_production)
-    print()
+    test_transform(transform_production)
     print("=== End of Program ===")
-
-
-# TODO need to create all the prints and test on this file. 
-# TODO so it does the same output as expected.
