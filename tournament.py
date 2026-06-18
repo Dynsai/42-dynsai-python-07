@@ -10,27 +10,23 @@ from ex2.strategy import (
 )
 
 
-def battle(
-    opponents: List[Tuple[CreatureFactory, BattleStrategy]]
-) -> None:
-    """Run all pairwise battles between opponents using their strategies."""
-    print("*** Tournament ***")
-    print(f"{len(opponents)} opponents involved")
+def battle(combatants: List[Tuple[CreatureFactory,
+                                  BattleStrategy]]) -> None:
+    print(f"{len(combatants)} combatants involved")
 
-    for i in range(len(opponents)):
-        for j in range(i + 1, len(opponents)):
-            factory_a, strategy_a = opponents[i]
-            factory_b, strategy_b = opponents[j]
-
+    for i in range(len(combatants)):
+        for j in range(i + 1, len(combatants)):
+            factory_a, strategy_a = combatants[i]
+            factory_b, strategy_b = combatants[j]
             creature_a = factory_a.create_base()
             creature_b = factory_b.create_base()
 
             print()
-            print("* Battle *")
+            print("*** Battle ***")
             print(creature_a.describe())
             print(" vs.")
             print(creature_b.describe())
-            print(" now fight!")
+            print("## FIGHT! ##")
 
             try:
                 strategy_a.act(creature_a)
@@ -45,9 +41,10 @@ if __name__ == "__main__":
     aggressive = AggressiveStrategy()
     defensive = DefensiveStrategy()
 
-    # Tournament 0: basic (Flameling+Normal vs Healing+Defensive)
-    print("Tournament 0 (basic)")
-    print(" [ (Flameling+Normal), (Healing+Defensive) ]")
+    # Tournament 0: Ok strategies
+    # Flameling with Normal vs HealingType with Defensive
+    print("=== Tournament 0 ===")
+    print("    Flameling with Normal vs HealingType with Defensive")
     battle([
         (FlameFactory(), normal),
         (HealingCreatureFactory(), defensive),
@@ -55,24 +52,28 @@ if __name__ == "__main__":
 
     print()
 
-    # Tournament 1: error (Flameling+Aggressive vs Healing+Defensive)
-    print("Tournament 1 (error)")
-    print(" [ (Flameling+Aggressive), (Healing+Defensive) ]")
+    # Tournament 1: Incorrect strategies
+    # Flameling with Aggressive vs HealingType with Defensive
+    print("=== Tournament 1 (Incorrect strategies) ====")
+    print("    Aquabub with Aggressive vs HealingType with Defensive")
     battle([
-        (FlameFactory(), aggressive),
+        (AquaFactory(), aggressive),
         (HealingCreatureFactory(), defensive),
     ])
 
     print()
 
-    # Tournament 2: multiple
-    # (Aquabub+Normal, Healing+Defensive, Transform+Aggressive)
-    print("Tournament 2 (multiple)")
+    # Tournament 2: All three strategies. All three ok.
+    # Aquabub with Normal,
+    # HealingType with Defensive,
+    # TransformType with Aggressive
+    print("=== Tournament 2 (Multiple strategies. All ok.) ===")
     print(
-        " [ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]"
+        "    Fireling+Normal vs Healing+Defensive vs Transform+Aggressive"
     )
     battle([
-        (AquaFactory(), normal),
+        (FlameFactory(), normal),
         (HealingCreatureFactory(), defensive),
         (TransformCreatureFactory(), aggressive),
     ])
+    print("=== End of Program ===")

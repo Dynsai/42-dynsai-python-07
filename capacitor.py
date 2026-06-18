@@ -1,9 +1,9 @@
 from ex1.factory import HealingCreatureFactory, TransformCreatureFactory
-from ex1.factory import CreatureFactory
 
 
-def test_heal(factory: CreatureFactory) -> None:
+def test_heal() -> None:
     print("=== Testing healing ===")
+    factory = HealingCreatureFactory()
     new_creature = factory.create_base()
     evolved_creature = factory.create_evolved()
     print(f"{new_creature.describe()}")
@@ -16,8 +16,9 @@ def test_heal(factory: CreatureFactory) -> None:
     print()
 
 
-def test_transform(factory: CreatureFactory) -> None:
+def test_transform() -> None:
     print("=== Testing transform ===")
+    factory = TransformCreatureFactory()
     new_creature = factory.create_base()
     evolved_creature = factory.create_evolved()
     print(f"{new_creature.describe()}")
@@ -35,10 +36,7 @@ def test_transform(factory: CreatureFactory) -> None:
 
 
 if __name__ == "__main__":
-    heal_production = HealingCreatureFactory()
-    transform_production = TransformCreatureFactory()
-
-    test_heal(heal_production)
+    test_heal()
     print()
-    test_transform(transform_production)
+    test_transform()
     print("=== End of Program ===")
