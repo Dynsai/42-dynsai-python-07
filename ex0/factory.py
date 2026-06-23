@@ -21,8 +21,8 @@ class FlameFactory(CreatureFactory):
 
 
 class AquaFactory(CreatureFactory):
-    def create_evolved(self) -> Aquabub:
+    def create_base(self) -> Aquabub:
         return Aquabub()
 
-    def create_base(self) -> Torragon:
+    def create_evolved(self) -> Torragon:
         return Torragon()

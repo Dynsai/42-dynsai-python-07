@@ -48,7 +48,7 @@ class DefensiveStrategy(BattleStrategy):
             print(creature.attack())
             print(creature_heal.heal())
         else:
-            raise ValueError("Invalid creature for this strategy")
+            raise ValueError("ERROR: Invalid creature for this strategy")
 
     def is_valid(self, creature: Creature) -> bool:
         if isinstance(creature, HealCapability):

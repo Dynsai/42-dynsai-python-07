@@ -10,7 +10,7 @@ class Sproutling(Creature, HealCapability):
         return f"{self.name} uses Vine Whip!"
 
     def heal(self) -> str:
-        return "Sproutling heals for a small amount"
+        return f"{self.name} heals for a small amount"
 
 
 class Bloomelle(Creature, HealCapability):
@@ -21,7 +21,7 @@ class Bloomelle(Creature, HealCapability):
         return f"{self.name} uses Petal Dance!"
 
     def heal(self) -> str:
-        return "Sproutling heals for a huge amount"
+        return f"{self.name} heals for a huge amount"
 
 
 class Shiftling(Creature, TransformCapability):
@@ -34,13 +34,13 @@ class Shiftling(Creature, TransformCapability):
             return f"{self.name} uses Powered Strike!"
         return f"{self.name} uses Strike!"
 
-    def transform(self):
+    def transform(self) -> str:
         self._transformed = True
-        return "Shiftling transform"
+        return f"{self.name} transform"
 
     def revert(self) -> str:
         self._transformed = False
-        return "Shiftling reverts their transformation"
+        return f"{self.name} reverts their transformation"
 
 
 class Morphagon(Creature, TransformCapability):
@@ -53,10 +53,10 @@ class Morphagon(Creature, TransformCapability):
             return f"{self.name} uses Powered Body Slam!"
         return f"{self.name} uses Body Slam!"
 
-    def transform(self):
+    def transform(self) -> str:
         self._transformed = True
-        return "Morphagon transform"
+        return f"{self.name} transform"
 
     def revert(self) -> str:
         self._transformed = False
-        return "Morphagon reverts their transformation"
+        return f"{self.name} reverts their transformation"
